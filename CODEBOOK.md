@@ -29,18 +29,18 @@
 
 #### LIBRARIES USED
 
-  dplyr
+  plyr
   
 
 #### RUNNING THE ANALYSIS (TRANSFORMATIONS):
 
 There is only one R script: run_analysis.R and it contains only one function called run_analysis(). 
 
-In order to run the script, please ensure that source data files are extracted as is under the working directory. There is also a dependency on dplyr package.
+In order to run the script, please ensure that source data files are extracted as is under the working directory. There is also a dependency on plyr package.
 
 **About the data**
 
-There are two "types" data sets: test and train data that is obtained from anonymised subjects. The data set pertains to tracking various activities of subjects using Samsung Galaxy smartphone
+There are two "types" of data sets: test and train data that is obtained from anonymised subjects. The data set pertains to tracking various activities of subjects using Samsung Galaxy smartphone.
 
 R script called run_analysis.R performs the following activities in order:-
 
@@ -59,9 +59,12 @@ R script called run_analysis.R performs the following activities in order:-
 
     - Loads the activity labels from activity_labels.txt
     - Loads the features labels from the feature.txt
+
     *features.txt provides the column names for the measurements dataset provided in the X_test & X_train datasets*
-    - Using the grep function on features dataset, prepare a dataframe containing the only the columns that contain either [mM]ean or [sS]td. There are a total of 86 such columns from a tota of 561 measurements columns that are now relevant for us.
+
+    - Using the grep function on the features dataset, prepares a dataframe containing only the columns that contain either [mM]ean or [sS]td. There are a total of 86 such columns from a tota of 561 measurements columns that are now relevant for us.
     - Using the whole_data the first two columns are extracted (representing subject_id and activity_id) and those 86 columns. This is stored into a new variable called whole_data_mean_std. 
+
     *This whole_data_mean_std dataset now contains all the relevant data variables for the remainder of the exercise*
     
 <br>
@@ -77,7 +80,6 @@ R script called run_analysis.R performs the following activities in order:-
         - 6 = LAYING
     - Change the column name from activity_id to activity
 
-    
 <br>
 
 4. Labels the measurement columns with the appropriate names
@@ -103,13 +105,13 @@ R script called run_analysis.R performs the following activities in order:-
 #### VARIABLES USED
 
 - subject_test = Raw data from subject_test.txt file
-- X_test = Raw data from X_test.txt file
+- x_test = Raw data from X_test.txt file
 - y_test = Raw data from y_test.txt file
 - subject_train = Raw data from subject_train file
-- X_train = Raw data from X_train.txt file
+- x_train = Raw data from X_train.txt file
 - y_train = Raw data from y_train.txt file
-- test_data = dataframe with column bounded from subject_test + y_test + X_test
-- train_data = dataframe with column bounded from subject_train + y_train + X_train
+- test_data = dataframe with column bounded from subject_test + y_test + x_test
+- train_data = dataframe with column bounded from subject_train + y_train + x_train
 - whole_data = Union of test and train data into a single dataframe
 - activity_labels = Raw data from activity_labels.txt file
 - features = Raw data from features.txt file
