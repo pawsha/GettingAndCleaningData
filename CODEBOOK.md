@@ -44,26 +44,28 @@ There are two "types" of data sets: test and train data that is obtained from an
 
 R script called run_analysis.R performs the following activities in order:-
 
-Step 1 - Load data sets and combine
+<br>
+Step 1 Load data sets and combine
 
-    -	Loads subject_test data, X_test data and y_test data into corresponding variables
-    -	Renames the subject_test column to "subject_id"
-    -   Renames the y_test column to "activity_id"
-    -	Prepares the test_data dataframe that combines the subject_id, activity_id and all measurements from X_test dataset's values
-    -	All four previous steps are performed for the train datasets and the train_data is prepared.
-    -	Both test_data and train_data are combined into one whole data set into a variable called whole_data
+- Loads subject_test data, X_test data and y_test data into corresponding variables
+- Renames the subject_test column to "subject_id"
+- Renames the y_test column to "activity_id"
+- Prepares the test_data dataframe that combines the subject_id, activity_id and all measurements from X_test dataset's values
+- All four previous steps are performed for the train datasets and the train_data is prepared.
+- Both test_data and train_data are combined into one whole data set into a variable called whole_data
     
 <br>
 
 Step 2 - Extracts only the mean and std measurement columns
 
-    - Loads the activity labels from activity_labels.txt
-    - Loads the features labels from the feature.txt
+- Loads the activity labels from activity_labels.txt
+- Loads the features labels from the feature.txt
 
     *features.txt provides the column names for the measurements dataset provided in the X_test & X_train datasets*
 
-    - Using the grep function on the features dataset, prepares a dataframe containing only the columns that contain either [mM]ean or [sS]td. There are a total of 86 such columns from a tota of 561 measurements columns that are now relevant for us.
-    - Using the whole_data the first two columns are extracted (representing subject_id and activity_id) and those 86 columns. This is stored into a new variable called whole_data_mean_std. 
+- Using the grep function on the features dataset, prepares a dataframe containing only the columns that contain either [mM]ean or [sS]td. There are a total of 86 such columns from a tota of 561 measurements columns that are now relevant for us.
+- Using the whole_data the first two columns are extracted (representing subject_id and activity_id) and those 86 columns. This is stored into a new variable called whole_data_mean_std. 
+
 
     *This whole_data_mean_std dataset now contains all the relevant data variables for the remainder of the exercise*
     
@@ -71,32 +73,32 @@ Step 2 - Extracts only the mean and std measurement columns
 
 Step 3 - Applies descriptive activity names to the activity_id column
 
-    - Using the activity Id and names from the activity dataframe, and using the factor function the activity_id column in the whole_data_mean_std is updated with activity names
-        - 1 = WALKING
-        - 2 = WALKING_UPSTAIRS
-        - 3 = WALKING_DOWNSTAIRS
-        - 4 = SITTING
-        - 5 = STANDING
-        - 6 = LAYING
-    - Change the column name from activity_id to activity
+- Using the activity Id and names from the activity dataframe, and using the factor function the activity_id column in the whole_data_mean_std is updated with activity names
+    - 1 = WALKING
+    - 2 = WALKING_UPSTAIRS
+    - 3 = WALKING_DOWNSTAIRS
+    - 4 = SITTING
+    - 5 = STANDING
+    - 6 = LAYING
+- Change the column name from activity_id to activity
 
 <br>
 
 Step 4 - Labels the measurement columns with the appropriate names
 
-    - The meausrement columns are available from the features_mean_std (after grep'ing)
-    - Note that the first two columns represent subject_id and activity, so only columns 3:88 are updated with new names
+- The meausrement columns are available from the features_mean_std (after grep'ing)
+- Note that the first two columns represent subject_id and activity, so only columns 3:88 are updated with new names
 
 <br>
 
 Step 5 - Prepares the tidy_data dataset using the ddply method, calculating mean for each of the 86 measurement columns
 
-    - Using ddply, calculates the mean for 86 columns and groups by subject_id and activity, storing the output in the tidy_data variable.
-    - Applies ordering to the tidy_data on subject_id and activity for an ordered output.
+- Using ddply, calculates the mean for 86 columns and groups by subject_id and activity, storing the output in the tidy_data variable.
+- Applies ordering to the tidy_data on subject_id and activity for an ordered output.
 
 Step 6 - Write the output to the tidy_data.txt file
 
-    - Using write.table function, write the tidy_data into the file using semicolumn as separators (column names may contain comma).
+- Using write.table function, write the tidy_data into the file using semicolumn as separators (column names may contain comma).
     
     *Note: row numbers are suppressed in the output file*
 
