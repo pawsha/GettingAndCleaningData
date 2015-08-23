@@ -44,7 +44,7 @@ There are two "types" of data sets: test and train data that is obtained from an
 
 R script called run_analysis.R performs the following activities in order:-
 
-1. Load data sets and combine
+Step 1 - Load data sets and combine
 
     -	Loads subject_test data, X_test data and y_test data into corresponding variables
     -	Renames the subject_test column to "subject_id"
@@ -55,7 +55,7 @@ R script called run_analysis.R performs the following activities in order:-
     
 <br>
 
-2. Extracts only the mean and std measurement columns
+Step 2 - Extracts only the mean and std measurement columns
 
     - Loads the activity labels from activity_labels.txt
     - Loads the features labels from the feature.txt
@@ -69,7 +69,7 @@ R script called run_analysis.R performs the following activities in order:-
     
 <br>
 
-3. Applies descriptive activity names to the activity_id column
+Step 3 - Applies descriptive activity names to the activity_id column
 
     - Using the activity Id and names from the activity dataframe, and using the factor function the activity_id column in the whole_data_mean_std is updated with activity names
         - 1 = WALKING
@@ -82,19 +82,19 @@ R script called run_analysis.R performs the following activities in order:-
 
 <br>
 
-4. Labels the measurement columns with the appropriate names
+Step 4 - Labels the measurement columns with the appropriate names
 
     - The meausrement columns are available from the features_mean_std (after grep'ing)
     - Note that the first two columns represent subject_id and activity, so only columns 3:88 are updated with new names
 
 <br>
 
-5. Prepares the tidy_data dataset using the ddply method, calculating mean for each of the 86 measurement columns
+Step 5 - Prepares the tidy_data dataset using the ddply method, calculating mean for each of the 86 measurement columns
 
     - Using ddply, calculates the mean for 86 columns and groups by subject_id and activity, storing the output in the tidy_data variable.
     - Applies ordering to the tidy_data on subject_id and activity for an ordered output.
 
-6. Write the output to the tidy_data.txt file
+Step 6 - Write the output to the tidy_data.txt file
 
     - Using write.table function, write the tidy_data into the file using semicolumn as separators (column names may contain comma).
     
